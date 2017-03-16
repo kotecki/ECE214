@@ -1,0 +1,25 @@
+** NGspice Simulation of 'Lab2' (Lib: ECE214_2017)
+
+***** Specify appropriate CMOS and Bipolar model files below
+.include '../../../SpiceModels/ECE214_models.mod'
+
+***** Temperature
+.temp 27
+
+***** Parameters
+.param freq=50000
+.param T=1/freq
+.global gnd
+
+
+***** Simulation Options
+.options post=1 delmax=5p relv=1e-6 reli=1e-6 relmos=1e-6 method=gear
+
+***** Simulation Parameters (.tran or .ac or .dc statements)
+*.tran 10u 10m
+.tran '1e-3*T' '1e-3+6*T' 1m 
+*.ac dec 101 100 1meg
+
+***** Have operating point information sent to output file
+.op
+

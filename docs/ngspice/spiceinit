@@ -1,0 +1,30 @@
+* Standard ngspice init file
+alias exit quit
+alias acct rusage all
+set x11lineararcs
+*set rndseed=12
+
+***** ascii rawfile *****
+* set filetype=ascii
+
+***** frontend debug output *****
+* set ngdebug
+
+***** no asking after quit *****
+set noaskquit
+
+strcmp __flag $program "ngspice"
+if $__flag = 0
+
+codemodel /Users/Kotecki/CppSim/CppSimShared/NGspice/NGspice_macosx/lib/ngspice/spice2poly.cm
+
+codemodel /Users/Kotecki/CppSim/CppSimShared/NGspice/NGspice_macosx/lib/ngspice/analog.cm
+
+codemodel /Users/Kotecki/CppSim/CppSimShared/NGspice/NGspice_macosx/lib/ngspice/digital.cm
+
+codemodel /Users/Kotecki/CppSim/CppSimShared/NGspice/NGspice_macosx/lib/ngspice/xtradev.cm
+
+codemodel /Users/Kotecki/CppSim/CppSimShared/NGspice/NGspice_macosx/lib/ngspice/xtraevt.cm
+
+end
+unset __flag
