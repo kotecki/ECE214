@@ -2,7 +2,7 @@
 
 addpath('/users/Kotecki/CppSim/CppSimShared/HspiceToolbox'); % add ngspice matlab toolbox to the path
 clear variables; % clear variables
-hspc_filename = 'ECE214_NGspice_Example.hspc'; % define hspc filename
+hspc_filename = 'ECE214_2018_NGspice_Example.hspc'; % define hspc filename
 
 %% Define simulation control statement and run ngspice
 hspc_addline('.tran 5u 5m 0 0', hspc_filename); % define transient simulation and write to hspc file
