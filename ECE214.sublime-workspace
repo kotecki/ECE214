@@ -38,10 +38,7 @@
 			}
 		},
 		{
-			"contents": "<!DOCTYPE html>\n\n<html lang=\"en\">\n<head>\n   <title>ECE214 Electrical Networks Laboratory - University of Maine</title>\n   <meta charset=\"utf-8\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n   <link href=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\" rel=\"stylesheet\">\n   <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>\n   <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js\"></script>\n   <script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>\n   <!-- include myfile.css -->\n   <link href=\"css/myfile.css\" rel=\"stylesheet\">\n   <!-- script for google analytics -->\n   <script>\n      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\n      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');\n      ga('create', 'UA-82641964-1', 'auto');\n      ga('send', 'pageview');\n   </script>\n</head>\n\n<body>\n\n   <div class=\"container\">\n\n      <div class=\"row\">\n         <div class=\"col-sm-3\">\n            <figure>\n               <img id=\"pict\" src=\"images/electricaltest2.jpg\" alt=\"microchip\" class=\"img-responsive center-block\" width=\"250px\"  />\n               <caption>Chip tested by UMaine students</caption>\n            </figure>\n         </div>\n\n         <div class=\"col-sm-9\">\n            <h2>ECE 214 - Electrical Networks Laboratory</h2>\n            <h3><a href=\"../index.html\">David E. Kotecki, Ph.D.</a></h3>\n            <h4>Associate Professor<br> Department of Electrical and Computer Engineering<br>University of Maine</h4>\n\n         </div>\n      </div>\n\n      <div class=\"row\">\n         <hr style=\"margin-top:7px\"/>\n         <div class=\"col-sm-6\">\n            <p><strong>Lab Procedures:</strong></p>\n            <ul>\n               <li><a href=\"labs/ECE214_2018_Lab1.pdf\">Laboratory #1</a> - Test Equipment Loading (30 January 2018)</li>\n               <li><a href=\"labs/ECE214_2018_Lab2.pdf\">Laboratory #2</a> - First Order RC Circuits (6 February 2018)</li>\n               <li><a href=\"labs/ECE214_2018_Lab3.pdf\">Laboratory #3</a> - RC Filter (13 February 2018)</li>\n               <li><a href=\"labs/ECE214_2018_Lab4.pdf\">Laboratory #4</a> - Basic OpAmp Circuits (20 February 2018)</li>\n               <li><a href=\"labs/ECE214_2018_lab5.pdf\">Laboratory #5</a> - Oscillator Design (27 February 2018)</li>\n               <li>Laboratory #6 - Inductors and the RLC Circuit (20 March 2018)</li>\n               <li>Laboratory #7 - Boost Converter (27 March 2018)</li>\n               <li>Laboratory #8 - Astable Multivibrator (3 April 2018)</li>\n               <li>Laboratory #9 - DC–DC Converter (10 April 2018)</li>\n               <li>Laboratory #10 - TBD (17 April 2018)</li>\n            </ul>\n\n         </div>\n         <div class=\"col-sm-6\">\n            <p><strong>Course Material:</strong></p>\n            <ul>\n               <li><a href=\"docs/ECE214_Syllabus_2018.pdf\">2018 Syllabus</a></li>\n               <li><a href=\"html/components.html\">Reference Material, Data Sheets, and Test Equipment Manuals</a></li>\n               <li><a href=\"html/electrical_safety.html\">Electrical Safety</a></li>\n               <li><a href=\"https://umaine.edu/it/software/matlab/\" target=\"_blank\">MATLAB - Download</a></li>\n               <li><a href=\"http://www.mathworks.com/products/matlab/index.html\" target=\"_blank\">MATLAB Technical Computing - Reference</a></li>\n               <!-- <li><a href=\"http://www.cppsim.com/about_ngspice.html\" target=\"_blank\">NGspice - Circuit Simulation Software</a></li> -->\n               <li><a href=\"html/ngspice.html\">NGspice - Circuit Simulation Software</a></li>\n               <li><a href=\"html/dc_dc_converter.html\">Having Fun with DC-DC Converters</a></li>\n               <li><a href=\"html/exams.html\">ECE 214 Practice Exams</a></li>\n            </ul>\n         </div>\n       </div>\n      \n\n      <div class=\"row\">\n         <hr />\n      </div>\n\n      <div class=\"row\">\n         <div id=\"foot\" class=\"col-sm-12\">\n            <p style=\"text-align:center\"><i>Copyright &#169; <span id=\"cr_year\"></span> David E. Kotecki unless otherwise attributed.</i></p>\n            <script>\n            var year = new Date().getFullYear();\n            var element = document.getElementById(\"cr_year\");\n            element.innerHTML = year;\n            </script>\n\n         </div>\n      </div>\n\n   </div><!--Ends the container class -->\n\n</body>\n\n</html>\n",
 			"file": "index.html",
-			"file_size": 4629,
-			"file_write_time": 131617245005562844,
 			"settings":
 			{
 				"buffer_size": 4707,
@@ -416,8 +413,8 @@
 						"selection":
 						[
 							[
-								2604,
-								2604
+								2955,
+								2955
 							]
 						],
 						"settings":
@@ -462,7 +459,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -524,7 +521,7 @@
 						"translation.y": 750.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -554,7 +551,7 @@
 						"translation.y": 105.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
