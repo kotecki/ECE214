@@ -1,6 +1,6 @@
 function [freq, magdb] = vt_to_vf(time, signal)
-%VT_TO_VF Approximates the Fourier Series of a signal with the output in dB.
-%   Calculates the magnitude of the FFT of a signal. The input should contain 
+%VT_TO_VF Approximates the Fourier Series of a signal with the output in dB by
+%   calculating the magnitude of the FFT of a signal. The input should contain 
 %   two vectors, "time" and "signal," of the same length. The signal should 
 %   represent multiple periods of a periodic signal to simulate the frequency 
 %   components of the Fourier Series. The ouputs of the function are two 
