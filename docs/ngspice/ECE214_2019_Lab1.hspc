@@ -1,4 +1,4 @@
-***** NGspice Simulation of ECE214 'Lab1' (Lib: ECE214_2018)
+** NGspice Simulation of 'Lab1' (Lib: ECE214_2017)
 
 ***** Specify the ECE 214 Spice models: 
 .include '../../../SpiceModels/ECE214_models.mod'
@@ -10,7 +10,7 @@
 .global gnd
 
 ***** Parameter Statements
-.param res=1e+07
+.param res=67.2336
 
 ***** Simulation Options (should not need to change)
 .options post=1 delmax=5p relv=1e-6 reli=1e-6 relmos=1e-6 method=gear
