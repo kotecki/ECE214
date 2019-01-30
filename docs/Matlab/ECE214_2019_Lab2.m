@@ -2,7 +2,7 @@
 
 addpath('/users/Kotecki/CppSim/CppSimShared/HspiceToolbox'); % add ngspice matlab toolbox to the path
 clear variables;
-hspc_filename = 'ECE214_2018_Lab2.hspc';
+hspc_filename = 'ECE214_2019_Lab2.hspc';
 
 %% Define variables and specify NGspice control statement
 frequency = 10000; % frequency variable
