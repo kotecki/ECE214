@@ -2,7 +2,7 @@
 
 addpath('/users/Kotecki/CppSim/CppSimShared/HspiceToolbox');
 clear variables;
-hspc_filename = 'ECE214_2018_Lab3.hspc';
+hspc_filename = 'ECE214_2019_Lab3.hspc';
 
 %% Define variables, specify NGspice control statement, and run NGspice
 % put your resistor and capacitor values here

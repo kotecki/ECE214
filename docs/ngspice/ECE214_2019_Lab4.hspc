@@ -1,0 +1,25 @@
+** NGspice Simulation of 'opamptest2' (Lib: ECE445)
+
+
+***** Device Model Files
+.include '../../../SpiceModels/ECE214_models.mod'
+
+***** Temperature
+.temp 27
+**** added line below using 'hspc_addline' function ****
+.tran 3.3333e-05 0.001 0 0
+
+***** Globals
+.global gnd
+
+***** Parameters
+.param freq=30000
+.param vpeak=0.005
+.param res1=1000
+.param res2=5000
+.param voffset=0
+
+***** Simulation Options
+.options post=1 delmax=5p relv=1e-6 reli=1e-6 relmos=1e-6 method=gear
+
+.op
