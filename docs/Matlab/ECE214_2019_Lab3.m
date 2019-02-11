@@ -94,7 +94,7 @@ xlabel('Frequency (Hz)', 'fontsize', fs); % label x-axis
 % legend('Filter Input'); % add legend
 % 
 % subplot(2,1,2)
-% semilogx(frequency, phase(Vout)*180/pi, 'linewidth',lw);
+% semilogx(frequency, angle(Vout)*180/pi, 'linewidth',lw);
 % grid on;
 % set(gca, 'fontsize', fs);
 % xlabel('Frequency (Hz)', 'fontsize', fs);
