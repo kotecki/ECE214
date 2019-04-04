@@ -23,14 +23,19 @@
 \usepackage{caption}
 \usepackage[figurename=Fig.]{caption}
 \captionsetup{labelsep = period}
+\captionsetup[table]{labelsep=newline}
+\captionsetup[table]{name=TABLE}
+\renewcommand{\thetable}{\Roman{table}}
+\captionsetup[figure]{labelsep=period}
 
 % paragraph indentation and separation
 \parindent = 0.0in  
-\parskip = 12pt   
+\parskip = 12pt
+%\renewcommand{\absnamepos}{flushleft} % left justifies abstract
 
 % use Arial font
-\usepackage{fontspec}
-\setmainfont{Arial}
+%\usepackage{fontspec}
+%\setmainfont{Arial}
 
 % header and footer
 \renewcommand{\headrulewidth}{0.0pt}
@@ -56,12 +61,12 @@
 \pagenumbering{roman}
 
 % Abstract 
-\begin{abstract}
+\section*{Abstract}
 \noindent In the abstract, give the reader a general idea of what the lab and report are about. The abstract should be on your cover page. Highlight the major sections of the circuit without going into too much detail. The abstract should stand alone, meaning that the reader should not have to look at the report itself to get an idea of what the report is about. Additionally, provide one or two of the most important results you obtained in lab. For example, if you built a DC--DC power supply, you would indicate that the power supply had a DC input of 10~V, and produced a DC output of 25~V with an ac ripple of xx~mV at a fundamental frequency of yy~kHz. Some ways to begin the abstract include:
 ``The design, construction, and testing of a [circuit] is described.''
 ``A [circuit] was designed, built, and tested.''
 On another note, when you list the names of the authors, list them in alphabetical order by last name.
-\end{abstract}
+
 
 \newpage
 \tableofcontents
@@ -208,7 +213,7 @@ Do not forget to add some discussion about each simulated result. Some people ju
 
 Insert your little blurb here. You can start by including a list of the test equipment that was used to measure your circuit and preview any problems you encountered. It really depends on the lab. Again, use past tense and third person.
 
-\subsection{Constructing the Circuit}
+\subsection{Boost Converter}
 
 If you are not sure how to break up Section 4, take a look at how you broke up Sections 2 and 3. Just make sure things are broken up in a way that makes sense. 
 
@@ -225,9 +230,11 @@ When you’re describing how you made measurements, you do not need to be overly
 
 If you use an abbreviation such as MOSFET, make sure you define it before you use it. For example: A metal-oxide semiconducting field-effect transistor (MOSFET) is popular device for use in amplifiers and integrated circuits (ICs).
 
-\subsection{Refining the Circuit}
+\subsection{Astable Multivibrator}
 
-\subsection{Experimental Results}
+\subsection{Low Pass Filter}
+
+\subsection{DC-DC Power Supply}
 
 Make sure there are at least two subsections or subsubsections. If there is only one subsection, there is no need for that subsection.  
 	
@@ -245,7 +252,7 @@ Summarize component values, results, and comparisons between theory, simulations
 
 \begin{table}[ht]
 \centering
-\caption{Example table for the lab report. Tables should have captions which are complete sentences.}
+\caption{Example table for the lab report.}
 \begin{tabular}{ |c|c|c|c|c|p{2in}| } 
  \hline\hline
  Frequency (kHz) & Voltage (V) & Phase ($^\circ$) & Current (mA) & comment  \\\hline\hline 
