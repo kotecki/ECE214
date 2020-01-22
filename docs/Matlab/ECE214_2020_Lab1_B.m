@@ -33,10 +33,10 @@
 % SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 %% Section 1: Define: CPPSim location, library, and schematic
-clear variables;  
+clear variables;
 CppSim_Location = sprintf('C:/CppSim'); % location of CppSim directory
-Design_Library = sprintf('ECE214_2017'); % name of design library
-Schematic_Name = sprintf('test5'); % name of schematic
+Design_Library = sprintf('Design Library'); % name of design library
+Schematic_Name = sprintf('Schematic Name'); % name of schematic
 
 %% Section 2: Generate HSPC file and run NGspice
 addpath(sprintf('%s/CppSimShared/HspiceToolbox', CppSim_Location)); % add ngspice matlab toolbox to the path
@@ -53,16 +53,13 @@ fprintf(hspcfile, '**** File: %s/%s **** \n', pwd, hspc_filename);
 fprintf(hspcfile, '**** Date: %s **** \n\n', datestr(datetime('now')));
 
 fprintf(hspcfile, '**** Simulation Statement ****\n');
-fprintf(hspcfile, '.tran 10u 10m 0 0 \n\n');
+fprintf(hspcfile, '.tran 1u 1m 0 0 \n\n');
 
 fprintf(hspcfile, '**** Paramenter Statements ****\n');
-fprintf(hspcfile, '.param res=1 \n\n');   % define resistor value res1
+fprintf(hspcfile, '.param res=1000 \n\n');  % define resistor value
 
 fprintf(hspcfile, '**** Include Statements ****\n');
 fprintf(hspcfile, '.include ../../../SpiceModels/ECE214_models.mod \n\n');
-
-% fprintf(hspcfile, '**** Initial Conditions ****\n');
-% fprintf(hspcfile, '.ic v(out1)=5 \n\n');
 
 fprintf(hspcfile, '**** Simulation Options ****\n');
 fprintf(hspcfile, '.options post=1 delmax=5p relv=1e-6 reli=1e-6 relmos=1e-6 method=gear \n');
@@ -72,7 +69,25 @@ fprintf(hspcfile, '.op \n\n');
 fprintf(hspcfile, '**** End of NGspice hspc file \n');
 fclose(hspcfile);
  
-%ngsim(hspc_filename); % run ngspice  
+ngsim(hspc_filename); % run ngspice  
+
+%% Section 3: Load simulation results and analyze data
+
+data = loadsig('simrun.raw');  % load data from simulation
+time = evalsig(data, 'TIME');  % create vector of time values
+Vout_1 = evalsig(data,'vin');   % create vector of node Va voltage values
+Vout_2 = evalsig(data, 'vout');  % create vector of node Vb voltage values
+
+fs = 17;   % define font size
+lw = 1.5;  % define linewidth
+FigHandle = figure('Position', [175, 50, 850, 600]);            % set figure size and location
+plot(time.*1000,  Vout_1, time.*1000, Vout_2, 'linewidth',lw);  % plot Vout_1 and Vout_2 vs time
+grid on;                               % add grid
+set(gca, 'fontsize', fs);              % increase font size
+ylabel('Voltage (V)', 'fontsize', fs); % y-axis label
+xlabel('Time (ms)', 'fontsize', fs);   % x-axis label
+title('Voltage vs. Time when R = 1000 \Omega');  % title
+legend('Input voltage', 'Output voltage');
 
 %% Generate N logarithmically spaced resistance values
 % range is from 10 Ohms - 10 Meg Ohms
@@ -92,10 +107,10 @@ end
 FigHandle = figure('Position', [200, 75, 850, 600]); % figure size and location
 semilogx(Rvalues, vpeak, '-s', 'linewidth', 2.0) % generate semilog plot
 grid on; % turn on the grid
-set(gca, 'fontsize', 16); % increase font size of title and axes text
-xlabel('Resistance (\Omega)', 'fontsize', 16); % label x-axis
-ylabel('Output Voltage (V)', 'fontsize', 16); % label y-axis
-title('Expected output voltage as a function of resistance'); % add title
+set(gca, 'fontsize', fs); % increase font size of title and axes text
+xlabel('Resistance (\Omega)', 'fontsize', fs); % label x-axis
+ylabel('Output Voltage (V)', 'fontsize', fs); % label y-axis
+title('Output voltage as a function of resistance'); % add title
 grid on; % turn on grid
 
 %% end of .m file

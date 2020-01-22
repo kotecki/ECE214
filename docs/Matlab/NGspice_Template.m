@@ -57,7 +57,7 @@ fprintf(hspcfile, '.tran 5u 5m 0 0 \n\n');
 
 fprintf(hspcfile, '**** Paramenter Statements ****\n');
 fprintf(hspcfile, '.param res1 = 10000 \n');   % define resistor value res1
-fprintf(hspcfile, '.param res2 = 21000 \n');   % define resistor value res2 
+fprintf(hspcfile, '.param res2 = 20000 \n');   % define resistor value res2 
 fprintf(hspcfile, '.param res3 = 5000 \n\n');  % define resistor value res3
 
 fprintf(hspcfile, '**** Include Statements ****\n');
@@ -83,8 +83,8 @@ time = evalsig(data, 'TIME');  % create vector of time values
 Vout_1 = evalsig(data,'va');   % create vector of node Va voltage values
 Vout_2 = evalsig(data, 'vb');  % create vector of node Vb voltage values
 
-fs = 16;   % define font size (fs)
-lw = 1.5;  % define linewidth (lw)
+fs = 16;   % define font size
+lw = 1.5;  % define linewidth
 FigHandle = figure('Position', [200, 75, 850, 600]);            % set figure size and location
 plot(time.*1000,  Vout_1, time.*1000, Vout_2, 'linewidth',lw);  % plot Vout_1 and Vout_2 vs time
 grid on;                               % add grid
