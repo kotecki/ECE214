@@ -49,8 +49,8 @@ fprintf(hspcfile, '**** Simulation Statement ****\n');
 fprintf(hspcfile, '.tran 100u 125m 25m 10u \n\n');
 
 fprintf(hspcfile, '**** Paramenter Statements ****\n');
-fprintf(hspcfile, '.param res1 = 5000 \n');   % define resistor value res1
-fprintf(hspcfile, '.param res2 = 50000 \n');   % define resistor value res2 
+fprintf(hspcfile, '.param res1 = 200 \n');   % define resistor value res1
+fprintf(hspcfile, '.param res2 = 2000 \n');   % define resistor value res2 
 fprintf(hspcfile, '.param cap1 = 40e-9 \n');  % define resistor value cap1
 fprintf(hspcfile, '.param cap2 = 4e-9 \n\n');  % define resistor value ?ap2
 
@@ -88,7 +88,7 @@ set(gca, 'fontsize', fs); % set font size
 ylabel('Voltage (V)', 'fontsize', fs); % label y-axis
 title('ECE 214: Lab 3 - Low Pass Filter (time domain)'); % title
 legend('Filter Input'); % add legend
-axis([25 40 -2 2]); % set axis limits
+axis([35 40 -2 2]); % set axis limits
 
 subplot(2,1,2); % second subplot
 plot(time.*1000, Vout, 'linewidth',lw);
@@ -97,7 +97,7 @@ set(gca, 'fontsize', fs); % set font size
 xlabel('Time (ms)', 'fontsize', fs); % label x-axis
 ylabel('Voltage (V)', 'fontsize', fs); % label y-axis
 legend('Filter Output'); % add legend
-axis([25 40 -2 2]); %set axis limits
+axis([35 40 -2 2]); %set axis limits
 
 %% Plot the FFT (Approximate Fourier Series)
 Fig2 = figure('Position', [150, 75, 850, 600]); % figure size and location
