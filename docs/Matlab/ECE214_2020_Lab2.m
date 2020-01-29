@@ -48,7 +48,7 @@ fprintf(hspcfile, '**** Date: %s **** \n\n', datestr(datetime('now')));
 frequency = 100; % set frequency of the voltage source
 
 fprintf(hspcfile, '**** Simulation Statement ****\n');
-fprintf(hspcfile, '.tran %d %d %d 0 \n\n', 0.01/frequency, 10e-3+10/frequency, 10e-3);
+fprintf(hspcfile, '.tran %d %d %d 0 \n\n', 0.01/frequency, 10e-3+5/frequency, 10e-3);
 
 fprintf(hspcfile, '**** Paramenter Statements ****\n');
 fprintf(hspcfile, '.param freq= %d \n\n', frequency);  % define resistor value
@@ -112,7 +112,7 @@ set(gca, 'fontsize', fs);
 xlabel('Time (ms)', 'fontsize', fs);   % x-axis label
 ylabel('Voltage (V)', 'fontsize', fs); % y-axis label
 title(sprintf('Frequency = %d kHz', frequency/1000)); % title
-legend('Node Voltage V1', 'Node Voltage V1'); % legend
+legend('Node Voltage V1', 'Node Voltage V2'); % legend
 legend show;
 % add peak voltages and phase shift information to the graph
 t1 = sprintf('V1 peak = %0.3g V \n',V1_peak);
