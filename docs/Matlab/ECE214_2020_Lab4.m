@@ -1,4 +1,4 @@
-%% ECE214 Lab #4 (Spring 2020)
+%% ECE214 Lab #4 Operational Amplifier Circuit (Spring 2020)
 
 %% Copyright (c) 2020 by David E. Kotecki. All rights reserved.
 
