@@ -1,4 +1,4 @@
-%% ECE214 Lab #2 (Spring 2020)
+%% ECE214 Lab #3 Low Pass Filter Design (Spring 2020)
 
 %% Copyright (c) 2020 by David E. Kotecki. All rights reserved.
 
@@ -28,8 +28,8 @@
 %% Section 1: Define: CPPSim location, library, and schematic
 clear variables;  
 CppSim_Location = sprintf('C:/CppSim'); % location of CppSim directory
-Design_Library = sprintf('Library_Name'); % name of design library
-Schematic_Name = sprintf('Schematic_Name'); % name of schematic
+Design_Library = sprintf('Library Name'); % name of design library
+Schematic_Name = sprintf('Schematic Name'); % name of schematic
 
 %% Section 2: Generate HSPC file and run NGspice
 addpath(sprintf('%s/CppSimShared/HspiceToolbox', CppSim_Location)); % add ngspice matlab toolbox to the path
@@ -49,8 +49,8 @@ fprintf(hspcfile, '**** Simulation Statement ****\n');
 fprintf(hspcfile, '.tran 100u 125m 25m 10u \n\n');
 
 fprintf(hspcfile, '**** Paramenter Statements ****\n');
-fprintf(hspcfile, '.param res1 = 200 \n');   % define resistor value res1
-fprintf(hspcfile, '.param res2 = 2000 \n');   % define resistor value res2 
+fprintf(hspcfile, '.param res1 = 10000 \n');   % define resistor value res1
+fprintf(hspcfile, '.param res2 = 100000 \n');   % define resistor value res2 
 fprintf(hspcfile, '.param cap1 = 40e-9 \n');  % define resistor value cap1
 fprintf(hspcfile, '.param cap2 = 4e-9 \n\n');  % define resistor value ?ap2
 

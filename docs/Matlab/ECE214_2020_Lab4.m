@@ -27,13 +27,9 @@
 
 %% Section 1: Define: CPPSim location, library, and schematic
 clear variables;  
-%CppSim_Location = sprintf('C:/CppSim'); % location of CppSim directory
-%Design_Library = sprintf('Library_Name'); % name of design library
-%Schematic_Name = sprintf('Schematic_Name'); % name of schematic
-
-CppSim_Location = sprintf('/Users/Kotecki/CppSim'); % location of CppSim directory
-Design_Library = sprintf('ECE214_2020'); % name of design library
-Schematic_Name = sprintf('Lab4_2020'); % name of schematic
+CppSim_Location = sprintf('C:/CppSim'); % location of CppSim directory
+Design_Library = sprintf('Library_Name'); % name of design library
+Schematic_Name = sprintf('Schematic_Name'); % name of schematic
 
 %% Section 2: Generate HSPC file and run NGspice
 addpath(sprintf('%s/CppSimShared/HspiceToolbox', CppSim_Location)); % add ngspice matlab toolbox to the path
