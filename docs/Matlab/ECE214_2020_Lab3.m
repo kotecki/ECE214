@@ -27,10 +27,13 @@
 
 %% Section 1: Define: CPPSim location, library, and schematic
 clear variables;  
-CppSim_Location = sprintf('C:/CppSim'); % location of CppSim directory
-Design_Library = sprintf('Library Name'); % name of design library
-Schematic_Name = sprintf('Schematic Name'); % name of schematic
+CppSim_Location = sprintf('/Users/Kotecki/CppSim'); % location of CppSim directory
+Design_Library = sprintf('ECE214_2020'); % name of design library
+Schematic_Name = sprintf('Lab3_2020_Ideal'); % name of schematic
 
+% CppSim_Location = sprintf('C:/CppSim'); % location of CppSim directory
+% Design_Library = sprintf('Library Name'); % name of design library
+% Schematic_Name = sprintf('Schematic Name'); % name of schematic
 %% Section 2: Generate HSPC file and run NGspice
 addpath(sprintf('%s/CppSimShared/HspiceToolbox', CppSim_Location)); % add ngspice matlab toolbox to the path
 Working_Dir = sprintf('%s/SimRuns/%s/%s', CppSim_Location, Design_Library, Schematic_Name);
@@ -145,7 +148,7 @@ xlabel('Frequency (Hz)', 'fontsize', fs); % label x-axis
 % legend('Filter Input'); % add legend
 % 
 % subplot(2,1,2)
-% semilogx(frequency, phase(Vout)*180/pi, 'linewidth',lw);
+% semilogx(frequency, angle(Vout)*180/pi, 'linewidth',lw);
 % grid on;
 % set(gca, 'fontsize', fs);
 % xlabel('Frequency (Hz)', 'fontsize', fs);

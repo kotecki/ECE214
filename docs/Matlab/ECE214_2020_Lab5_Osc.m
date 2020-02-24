@@ -27,9 +27,13 @@
 
 %% Section 1: Define: CPPSim location, library, and schematic
 clear variables;  
-CppSim_Location = sprintf('C:/CppSim'); % location of CppSim directory
-Design_Library = sprintf('Library_Name'); % name of design library
-Schematic_Name = sprintf('Schematic_Name'); % name of schematic
+CppSim_Location = sprintf('/Users/Kotecki/CppSim'); % location of CppSim directory
+Design_Library = sprintf('ECE214_2020'); % name of design library
+Schematic_Name = sprintf('Lab5_2020_Osc'); % name of schematic
+
+% CppSim_Location = sprintf('C:/CppSim'); % location of CppSim directory
+% Design_Library = sprintf('Library_Name'); % name of design library
+% Schematic_Name = sprintf('Schematic_Name'); % name of schematic
 
 %% Section 2: Generate HSPC file and run NGspice
 addpath(sprintf('%s/CppSimShared/HspiceToolbox', CppSim_Location)); % add ngspice matlab toolbox to the path
@@ -82,8 +86,8 @@ FigHandle = figure('Position', [200, 75, 850, 600]);            % set figure siz
 plot(time.*1000,  Vout_1, time.*1000, Vout_2, 'linewidth',lw);  % plot Vout_1 and Vout_2 vs time
 grid on;                                 % add grid
 set(gca, 'fontsize', fs);                % increase font size
-ylabel('Time (ms)', 'fontsize', fs);     % y-axis label
-xlabel('Voltage (V)', 'fontsize', fs);   % x-axis label
+xlabel('Time (ms)', 'fontsize', fs);     % y-axis label
+ylabel('Voltage (V)', 'fontsize', fs);   % x-axis label
 title('ECE214: Lab #5 - Oscillator');    % title
 legend('Schmitt Trigger Output', 'Integrator Output', 'fontsize', fs);
 
