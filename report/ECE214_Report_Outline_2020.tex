@@ -1,0 +1,164 @@
+\documentclass[11pt]{article}
+
+% useful packages
+\usepackage{fullpage} % sets more standardized margins
+\usepackage{graphicx} % some graphics functions 
+\usepackage{tocloft}  % single space table of contents
+\usepackage[title,toc,page]{appendix}
+\usepackage[nottoc]{tocbibind}
+\usepackage{fancyhdr}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!55!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\usepackage{fontspec}
+\setmainfont{Arial}
+
+% to comport to IEEE style for referenceing figures
+\usepackage{caption}
+\usepackage[figurename=Fig.]{caption}
+\captionsetup{labelsep = period}
+\captionsetup[table]{labelsep=newline}
+\captionsetup[table]{name=TABLE}
+\renewcommand{\thetable}{\Roman{table}}
+\captionsetup[figure]{labelsep=period}
+
+% paragraph indentation and separation
+\parindent = 0.0in  
+\parskip = 12pt
+%\renewcommand{\absnamepos}{flushleft} % left justifies abstract
+
+% use Arial font
+%\usepackage{fontspec}
+%\setmainfont{Arial}
+
+% header and footer
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lfoot{{\fontsize{10}{11} \selectfont ECE 214 - DC--DC Power Supply}}
+\cfoot{}
+\rfoot{\fontsize{10}{11} \selectfont \thepage\ of \pageref{LastPage}}
+\lhead{}
+\chead{}
+\rhead{}
+\pagestyle{fancy}
+
+\begin{document}
+
+% Title and autheor
+\title{ \textbf{ECE 214 Lab Report}\\
+	DC-DC Power Supply}
+\author{Author 1\\
+  	Author 2}
+\date{\today}
+\maketitle
+\thispagestyle{empty}
+\pagenumbering{roman}
+
+% Abstract 
+\section*{Abstract}
+\noindent In the abstract, give the reader a general idea of what the lab and report are about. The abstract should be on your cover page. Highlight the major sections of the circuit without going into too much detail. The abstract should stand alone, meaning that the reader should not have to look at the report itself to get an idea of what the report is about. Additionally, provide one or two of the most important results you obtained in lab. For example, if you built a DC--DC power supply, you would indicate that the power supply had a DC input of 10~V, and produced a DC output of Y~V with an ac ripple of xx~mV at a fundamental frequency of yy~kHz. Some ways to begin the abstract include:
+``The design and simulation of a [circuit] is described.''
+On another note, when you list the names of the authors, list them in alphabetical order by last name.
+
+
+\newpage
+\tableofcontents
+
+\newpage
+\listoffigures
+
+\newpage
+\listoftables
+
+\newpage 
+\pagenumbering{arabic} % Turn on page numbering
+
+\section{Introduction}
+
+\section{Circuit Design and Analysis}
+
+\subsection{Boost Converter Circuit and Analysis}
+
+\subsubsection{Calculation of Energy Loss in the Capacitor}
+
+\subsubsection{Calculation of Time for Current to Flow Into the Inductor}
+
+\subsubsection{Calculation of Time for Current to Flow Out of the Inductor}
+
+\subsubsection{Calculation and Selection of Output Resistor}
+
+\subsubsection{Calculation of Function Generator Settings}
+
+
+\subsection{Astable Multivibrator Circuit and Analysis}
+
+\subsubsection{Calculation of Frequency and Duty Cycle}
+
+\subsubsection{Selection of Capacitors Values}
+
+\subsection{Low Pass Filter Circuit and Analysis}
+
+\subsection{DC--DC Power Supply Circuit and Analysis}
+
+\subsection{Th\'evenin Equivalent Output Impedance of DC-DC Power Supply}
+
+
+\section{Simulated Performance}
+
+\subsection{Boost Converter Simulation}
+\subsubsection{Transient Analysis}
+\subsubsection{Current Through Transistor}
+\subsubsection{Temperature Analysis}
+
+\subsection{Astable Multivibrator Simulation}
+\subsubsection{Transient Analysis}
+\subsubsection{Capacitor Sensitivity Analysis}
+
+\subsection{Low Pass Filter Simulation}
+
+\subsection{DC-DC Power Supply}
+\subsubsection{Transient Simulation}
+\subsubsection{Temperature Range of Operation}
+\subsubsection{Yield Analysis}
+
+\section{Discussion}
+\subsection{Boost Converter}
+\subsection{Astable Multivibrator}
+\subsection{Low Pass Filter}
+\subsection{DC-DC Power Supply}
+
+
+\section{DC--DC Power Supply Cost Estimate}
+
+
+\section{Conclusions}
+
+this is the reference section
+\cite{ECE214_Lab7}
+\cite{test}
+
+
+\newpage
+\begin{appendices}
+\section{This is the first appendix}
+
+\section{This is the second appendix}
+\end{appendices}
+
+
+\newpage
+% add a bibliography. Use the IEEE style guide for references.
+\bibliographystyle{IEEEtran}  % IEEE Standard for bibliography
+\bibliography{ECE214_Report} % Bibtex database file: "ECE214_Report.bib"
+
+
+\end{document}
