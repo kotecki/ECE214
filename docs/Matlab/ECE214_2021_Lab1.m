@@ -27,14 +27,14 @@
 
 %% Section 1: Define: CPPSim location, library, and schematic
 clear variables;
-CppSim_Location = sprintf('C:/CppSim'); % location of CppSim directory
-Design_Library = sprintf('ECE214_2020'); % name of design library
+ CppSim_Location = sprintf('C:/CppSim'); % location of CppSim directory
+Design_Library = sprintf('ECE214'); % name of design library
 Schematic_Name = sprintf('Lab1'); % name of schematic
 
 %% Section 2: Generate HSPC file and run NGspice
 addpath(sprintf('%s/CppSimShared/HspiceToolbox', CppSim_Location)); % add ngspice matlab toolbox to the path
 Working_Dir = sprintf('%s/SimRuns/%s/%s', CppSim_Location, Design_Library, Schematic_Name);
-if ~exist(Working_Dir, 'dir')  
+if ~exist(Working_Dir, 'dir')
     mkdir(Working_Dir)  % create working directory if it does not exist
 end
 cd(Working_Dir) % set current folder to the working directory
@@ -83,7 +83,7 @@ grid on;                               % add grid
 set(gca, 'fontsize', fs);              % increase font size
 ylabel('Voltage (V)', 'fontsize', fs); % y-axis label
 xlabel('Time (ms)', 'fontsize', fs);   % x-axis label
-resstr = insert_commas(resistor);
+resstr = insertcommas(resistor);
 title(strcat('Voltage vs. Time when R = ', resstr, '\Omega'));  % title
 legend('Input voltage', 'Output voltage');
 
@@ -111,20 +111,18 @@ ylabel('Output Voltage (V)', 'fontsize', fs); % label y-axis
 title('Output voltage as a function of resistance'); % add title
 grid on; % turn on grid
 
-%% Add commas to resistor value in title
-function comma_N = insert_commas(N)
-% Insert commas into numbers, e.g. 1234567 -> '1,234,567'.
+%% Add commas to resistor value in title of the plot
+function comma = insertcommas(N)
 N = num2str(N);
-num_digits = length(N);
-comma_N = '';
-for j = 1:num_digits
-    comma_N = strcat(N(num_digits-j+1),comma_N);
+comma = '';
+for j = 1:length(N)
+    comma = strcat(N(length(N)-j+1),comma);
     if ~mod(j,3)
-        comma_N = strcat(',',comma_N);
+        comma = strcat(',',comma);
     end    
 end
-if strcmp(comma_N(1), ',')
-    comma_N(1) = [];
+if strcmp(comma(1), ',')
+    comma(1) = [];
 end
 end
 
