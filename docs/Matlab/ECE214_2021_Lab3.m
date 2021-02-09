@@ -27,9 +27,9 @@
 
 %% Section 1: Define: CPPSim location, library, and schematic
 clear variables;
-CppSim_Location = sprintf('C:/CppSim'); % location of CppSim directory
-Design_Library = sprintf('Library Name'); % name of design library
-Schematic_Name = sprintf('Schematic Name'); % name of schematic
+ CppSim_Location = sprintf('C:/CppSim'); % location of CppSim directory
+ Design_Library = sprintf('Library Name'); % name of design library
+ Schematic_Name = sprintf('Schematic Name'); % name of schematic
 %% Section 2: Generate HSPC file and run NGspice
 addpath(sprintf('%s/CppSimShared/HspiceToolbox', CppSim_Location)); % add ngspice matlab toolbox to the path
 Working_Dir = sprintf('%s/SimRuns/%s/%s', CppSim_Location, Design_Library, Schematic_Name);
@@ -52,6 +52,8 @@ fprintf(hspcfile, '.param res1 = 2000 \n');   % define resistor value res1
 fprintf(hspcfile, '.param res2 = 10000 \n');   % define resistor value res2 
 fprintf(hspcfile, '.param cap1 = 10e-9 \n');  % define resistor value cap1
 fprintf(hspcfile, '.param cap2 = 2e-9 \n\n');  % define resistor value ?ap2
+ECE214_2021_Lab3_parameters;
+
 
 fprintf(hspcfile, '**** Include Statements ****\n');
 fprintf(hspcfile, '.include ../../../SpiceModels/ECE214_models.mod \n\n');
@@ -120,6 +122,13 @@ axis([100,1e5,-40,10]);
 legend('Filter Output'); % add legend
 ylabel('Voltage (dB)', 'fontsize', fs); % label y-axis
 xlabel('Frequency (Hz)', 'fontsize', fs); % label x-axis
+
+%% Read measured data into Matlab
+% AD2_data = readtable('/home/David/Dropbox/Waveforms_data/lab3_data.csv');
+% AD2_data.Properties.VariableNames = {'freq', 'mag1', 'mag2', 'ph'};
+% meas_f = AD2_data.freq;
+% meas_m = AD2_data.mag2;
+% meas_p = AD2_data.ph;
 
 %% Post Lab - Frequency response of Low Pass Filter (ac analysis)
 % % set the AC_Voltage = 1 volt in the schematic
