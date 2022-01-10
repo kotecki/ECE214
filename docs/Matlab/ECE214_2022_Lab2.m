@@ -1,11 +1,4 @@
-%% Template file for running NGspice
-%  Designed to work with CPPsim and the Sue2 editor.
-%  This Matlab script can be placed in any directory.
-%  The script is divided into three sections:
-%     Section 1: Input the location of your CppSim directory, library name,
-%                and schematic name.
-%     Section 2: Input the simulation and any device parameters.
-%     Section 3: Load simulation results and analyze data.
+%% ECE214 Lab #2 (Spring 2022)
 
 %% Copyright (c) 2022 by David E. Kotecki. All rights reserved.
 
@@ -33,10 +26,11 @@
 % SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 %% Section 1: Define: CPPSim location, library, and schematic
-clear variables;  
-CppSim_Location = sprintf('C:/CppSim'); % location of CppSim directory
-Design_Library = sprintf('Library_Name'); % name of design library
-Schematic_Name = sprintf('Schematic_Name'); % name of schematic
+clear variables;
+% CppSim_Location = sprintf('C:/CppSim'); % location of CppSim directory
+CppSim_Location = sprintf('/Users/Kotecki/CppSim'); % location of CppSim directory
+Design_Library = sprintf('ECE214_2020'); % name of design library
+Schematic_Name = sprintf('Lab2_2020_Measured'); % name of schematic
 
 %% Section 2: Generate HSPC file and run NGspice
 addpath(sprintf('%s/CppSimShared/HspiceToolbox', CppSim_Location)); % add ngspice matlab toolbox to the path
@@ -52,19 +46,16 @@ fprintf(hspcfile, '**** NGspice HSPC file **** \n');
 fprintf(hspcfile, '**** File: %s/%s **** \n', pwd, hspc_filename);
 fprintf(hspcfile, '**** Date: %s **** \n\n', datestr(datetime('now')));
 
+frequency = 50000; % set frequency of the voltage source
+
 fprintf(hspcfile, '**** Simulation Statement ****\n');
-fprintf(hspcfile, '.tran 5u 5m 0 0 \n\n');
+fprintf(hspcfile, '.tran %d %d %d 0 \n\n', 0.01/frequency, 10e-3 + 5/frequency, 10e-3);
 
 fprintf(hspcfile, '**** Paramenter Statements ****\n');
-fprintf(hspcfile, '.param res1 = 10000 \n');   % define resistor value res1
-fprintf(hspcfile, '.param res2 = 20000 \n');   % define resistor value res2 
-fprintf(hspcfile, '.param res3 = 5000 \n\n');  % define resistor value res3
+fprintf(hspcfile, '.param freq= %d \n\n', frequency);  % define resistor value
 
 fprintf(hspcfile, '**** Include Statements ****\n');
 fprintf(hspcfile, '.include ../../../SpiceModels/ECE214_models.mod \n\n');
-
-% fprintf(hspcfile, '**** Initial Conditions ****\n');
-% fprintf(hspcfile, '.ic v(out1)=5 \n\n');
 
 fprintf(hspcfile, '**** Simulation Options ****\n');
 fprintf(hspcfile, '.options post=1 delmax=5p relv=1e-6 reli=1e-6 relmos=1e-6 method=gear \n');
@@ -78,19 +69,58 @@ ngsim(hspc_filename); % run ngspice
 
 %% Section 3: Load simulation results and analyze data
 
-data = loadsig('simrun.raw');  % load data from simulation
+data = loadsig('simrun.raw');  % load data from simulation into Matlab
 time = evalsig(data, 'TIME');  % create vector of time values
-Vout_1 = evalsig(data,'va');   % create vector of node Va voltage values
-Vout_2 = evalsig(data, 'vb');  % create vector of node Vb voltage values
+V1 = evalsig(data,'va');       % create vector of node Va voltage values
+V2 = evalsig(data, 'vb');      % create vector of node Vb voltage values
 
-fs = 16;   % define font size
-lw = 1.5;  % define linewidth
-FigHandle = figure('Position', [200, 75, 850, 600]);            % set figure size and location
-plot(time.*1000,  Vout_1, time.*1000, Vout_2, 'linewidth',lw);  % plot Vout_1 and Vout_2 vs time
-grid on;                               % add grid
-set(gca, 'fontsize', fs);              % increase font size
-ylabel('y-axis label (units)', 'fontsize', fs); % y-axis label
-xlabel('x-axis label (units)', 'fontsize', fs);   % x-axis label
-title('title of plot');            % title
+% calculate peak voltages for V_1 and V_2
+V1_peak = max(V1);
+V2_peak = max(V2);
+
+% Define empty arrays to calculate the zero crossings for V1 and V2
+V1_zero = [ ];
+V2_zero = [ ];
+% calculate the zero-crossings of V1 for the rising edge
+for index = 1:length(V1)-1
+    if(V1(index) < 0 && V1(index+1) > 0)
+        slope = (V1(index+1) - V1(index)) / (time(index + 1) - time(index));
+        V1_zero(end+1) = time(index) - V1(index)./slope;
+    end
+end
+% calculate the zero-crossings of V2 for the rising edge
+for index = 1:length(V2)-1
+    if(V2(index) < 0 && V2(index+1) > 0)
+        slope = (V2(index+1) - V2(index)) / (time(index + 1) - time(index));
+        V2_zero(end+1) = time(index) - V2(index)./slope;
+    end
+end
+% Calculate the phase shift in degrees
+if V1(1) >= 0
+    DeltaT = V2_zero(3) - V1_zero(2);
+else
+    DeltaT = V2_zero(3) - V1_zero(3);
+end
+PS = - 360 .* DeltaT .* frequency;
+
+% plot V1 and V2 as a function of time
+FigHandle = figure('Position', [200, 75, 850, 600]);  % set figure size and location
+fs = 16; % font size
+lw = 2;  % linewidth
+plot(time.*1000, V1, time.*1000, V2, 'linewidth', lw)
+grid on;% add grid
+set(gca, 'fontsize', fs);
+xlabel('Time (ms)', 'fontsize', fs);   % x-axis label
+ylabel('Voltage (V)', 'fontsize', fs); % y-axis label
+title(sprintf('Frequency = %.2f kHz', frequency/1000)); % title
+legend('Node Voltage V1', 'Node Voltage V2'); % legend
+legend show;
+% add peak voltages and phase shift information to the graph
+t1 = sprintf('V1 peak = %0.3g V \n',V1_peak);
+t2 = sprintf('V2 peak = %0.3g V \n',V2_peak);
+t3 = sprintf('PS = %0.3g ^{o}',PS);
+text=[t1 t2 t3];
+dim = [.15, .7 .2 .2];
+annotation('textbox',dim,'String',text,'FitBoxToText','on', 'BackgroundColor','white', 'FaceAlpha',0.8,'fontsize', fs);
 
 %% end of .m file
