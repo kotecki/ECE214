@@ -51,7 +51,6 @@ fprintf(hspcfile, '.dc V0 0 12 .01 \n\n'); % DC sweep from 0 to 10 V
 fprintf(hspcfile, '**** Paramenter Statements ****\n');
 fprintf(hspcfile, '.param res1 = 10e3 \n');   % define resistor value res1
 fprintf(hspcfile, '.param res2 = 10e3 \n\n');   % define resistor value res2 
-ECE214_2021_Lab5_parameters_Schmitt
 
 fprintf(hspcfile, '**** Include Statements ****\n');
 fprintf(hspcfile, '.include ../../../SpiceModels/ECE214_models.mod \n\n');

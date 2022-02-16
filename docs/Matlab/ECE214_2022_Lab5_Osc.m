@@ -53,7 +53,6 @@ fprintf(hspcfile, '.param res1 = 10000 \n');   % define resistor value res1
 fprintf(hspcfile, '.param res2 = 10000 \n');   % define resistor value res2 
 fprintf(hspcfile, '.param res3 = 10000 \n');    % define resistor value res3
 fprintf(hspcfile, '.param cap = 150e-9 \n\n'); % define capacitor value cap
-ECE214_2021_Lab5_parameters_Osc
 
 fprintf(hspcfile, '**** Include Statements ****\n');
 fprintf(hspcfile, '.include ../../../SpiceModels/ECE214_models.mod \n\n');
