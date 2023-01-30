@@ -46,10 +46,10 @@ fprintf(hspcfile, '**** NGspice HSPC file **** \n');
 fprintf(hspcfile, '**** File: %s/%s **** \n', pwd, hspc_filename);
 fprintf(hspcfile, '**** Date: %s **** \n\n', datestr(datetime('now')));
 
-frequency = 500; % set frequency of the voltage source
+frequency = 100; % set frequency of the voltage source
 
 fprintf(hspcfile, '**** Simulation Statement ****\n');
-fprintf(hspcfile, '.tran %d %d \n\n', 0.005/frequency, + 5/frequency);
+fprintf(hspcfile, '.tran %d %d %d 0 \n\n', 0.005/frequency, 10e-3 + 5/frequency, 10e-3);
 
 fprintf(hspcfile, '**** Paramenter Statements ****\n');
 fprintf(hspcfile, '.param freq= %d \n\n', frequency);  % define resistor value
