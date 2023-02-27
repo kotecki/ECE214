@@ -46,7 +46,7 @@ fprintf(hspcfile, '**** File: %s/%s **** \n', pwd, hspc_filename);
 fprintf(hspcfile, '**** Date: %s **** \n\n', datestr(datetime('now')));
 
 fprintf(hspcfile, '**** Simulation Statement ****\n');
-fprintf(hspcfile, '.dc V0 0 12 .01 \n\n'); % DC sweep from 0 to 10 V
+fprintf(hspcfile, '.dc V0 0 12 .01 \n\n'); % DC sweep from 0 to 12 V
 
 fprintf(hspcfile, '**** Paramenter Statements ****\n');
 fprintf(hspcfile, '.param res1 = 10e3 \n');   % define resistor value res1
@@ -88,7 +88,7 @@ title('ECE 214: Lab 5 - Schmitt Trigger'); % title
 grid on; % add grid
 
 %% NGspice control statement and run NGspice
-hspc_addline('.dc V0 12 0 -.01', hspc_filename); % DC sweep from 10 to 0V
+hspc_addline('.dc V0 12 0 -.01', hspc_filename); % DC sweep from 12 to 0V
 ngsim(hspc_filename); % run NGspice
 
 %% load simulation results and extract time, Vout, and Vin
