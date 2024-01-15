@@ -88,6 +88,7 @@ resstr = insertcommas(resistor);
 title(strcat('Voltage vs. Time when R = ', resstr, '\Omega'));  % title
 legend('Input voltage', 'Output voltage');
 
+return
 %% Generate N logarithmically spaced resistance values
 % range is from 10 Ohms - 10 Meg Ohms
 N = 20;
