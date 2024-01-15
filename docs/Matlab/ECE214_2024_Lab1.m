@@ -28,7 +28,7 @@
 %% Section 1: Define: CPPSim location, library, and schematic
 clear variables;
 % CppSim_Location = sprintf('C:/CppSim'); % location of CppSim directory
-CppSim_Location = sprintf('/Users/Kotecki/CppSim'); % location of CppSim directory
+CppSim_Location = sprintf('/Users/david/CppSim'); % location of CppSim directory
 Design_Library = sprintf('ECE214_2022'); % name of design library
 Schematic_Name = sprintf('Lab1a'); % name of schematic
 
