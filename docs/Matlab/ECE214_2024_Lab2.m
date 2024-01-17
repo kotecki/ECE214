@@ -92,6 +92,6 @@ set(gca, 'fontsize', fs);              % increase font size
 ylabel('Voltage (V)', 'fontsize', fs); % y-axis label
 xlabel('Time (ms)', 'fontsize', fs);   % x-axis label
 %legend('Input Voltage', 'Output Voltage'); % legend
-title('ECE214 - Lab 4 (Spring 2021)'); % title
+title('ECE214 - Lab 4 (Spring 2024)'); % title
 
 %% end of .m file
