@@ -27,13 +27,13 @@
 
 %% Section 1: Define: CPPSim location, library, and schematic
 clear variables;
-CppSim_Location = sprintf('C:/CppSim'); % location of CppSim directory
-Design_Library = sprintf('Library Name'); % name of design library
-Schematic_Name = sprintf('Schematic Name'); % name of schematic
+% CppSim_Location = sprintf('C:/CppSim'); % location of CppSim directory
+% Design_Library = sprintf('Library Name'); % name of design library
+% Schematic_Name = sprintf('Schematic Name'); % name of schematic
 
-% CppSim_Location = sprintf('/Users/Kotecki/CppSim'); % location of CppSim directory
-% Design_Library = sprintf('ECE214_2024'); % name of design library
-% Schematic_Name = sprintf('Lab5_Measured'); % name of schematic
+CppSim_Location = sprintf('/Users/david/CppSim'); % location of CppSim directory
+Design_Library = sprintf('ECE214_2024'); % name of design library
+Schematic_Name = sprintf('Lab5_filter_test_2024'); % name of schematic
 
 %% Section 2: Generate HSPC file and run NGspice
 addpath(sprintf('%s/CppSimShared/HspiceToolbox', CppSim_Location)); % add ngspice matlab toolbox to the path
@@ -50,19 +50,17 @@ fprintf(hspcfile, '**** File: %s/%s **** \n', pwd, hspc_filename);
 fprintf(hspcfile, '**** Date: %s **** \n\n', datestr(datetime('now')));
 
 fprintf(hspcfile, '**** Simulation Statement ****\n');
-fprintf(hspcfile, '.tran 100u 125m 25m 10u \n\n');
+fprintf(hspcfile, '.tran 100u 125m 25m 0 \n\n');
 
 fprintf(hspcfile, '**** Paramenter Statements ****\n');
 fprintf(hspcfile, '.param res1 = 20 \n');   % define resistor value res1
 fprintf(hspcfile, '.param res2 = 20 \n');   % define resistor value res2 
-fprintf(hspcfile, '.param cap1 = 10e-9 \n');  % define resistor value cap1
-fprintf(hspcfile, '.param cap2 = 10e-9 \n\n');  % define resistor value ?ap2
+fprintf(hspcfile, '.param cap1 = 20 \n');  % define resistor value cap1
+fprintf(hspcfile, '.param cap2 = 20 \n\n');  % define resistor value ?ap2
+ECE214_2024_Lab5_parameters;
 
 fprintf(hspcfile, '**** Include Statements ****\n');
 fprintf(hspcfile, '.include ../../../SpiceModels/ECE214_models.mod \n\n');
-
-% fprintf(hspcfile, '**** Initial Conditions ****\n');
-% fprintf(hspcfile, '.ic v(out1)=5 \n\n');
 
 fprintf(hspcfile, '**** Simulation Options ****\n');
 fprintf(hspcfile, '.options post=1 delmax=5p relv=1e-6 reli=1e-6 relmos=1e-6 method=gear \n');
@@ -90,7 +88,7 @@ plot(time.*1000,  Vin, 'linewidth',lw);
 grid on; % add grid
 set(gca, 'fontsize', fs); % set font size
 ylabel('Voltage (V)', 'fontsize', fs); % label y-axis
-title('ECE 214: Lab 3 - Low Pass Filter (time domain)'); % title
+title('ECE 214: Lab 5 - Low Pass Filter (time domain)'); % title
 legend('Filter Input'); % add legend
 axis([35 40 -2 2]); % set axis limits
 
@@ -115,7 +113,7 @@ set(gca, 'fontsize', fs);
 axis([100,1e5,-30,10]); % set axis limits
 legend('Filter Input'); % add legend
 ylabel('Voltage (dB)', 'fontsize', fs); % label y-axis
-title('ECE 214: Lab 3 - Low Pass Filter (Fourier components of square wave)')
+title('ECE 214: Lab 5 - Low Pass Filter (Fourier components of square wave)')
 
 subplot(2,1,2);
 [freq, mag_out] = vt_to_vf(time, Vout); % generate Fourier components
@@ -127,9 +125,9 @@ legend('Filter Output'); % add legend
 ylabel('Voltage (dB)', 'fontsize', fs); % label y-axis
 xlabel('Frequency (Hz)', 'fontsize', fs); % label x-axis
 
-return
+% return
 %% Read measured data into Matlab
-% AD2_data = readtable('/home/David/Dropbox/Waveforms_data/lab3b_data.csv', 'NumHeaderLines', 30);
+% AD2_data = readtable('/Users/david/Dropbox/Waveforms_data/lab5_data.csv', 'NumHeaderLines', 30);
 % AD2_data.Properties.VariableNames = {'freq', 'mag1', 'mag2', 'ph'};
 % meas_f = AD2_data.freq;
 % meas_m = AD2_data.mag2;
@@ -150,18 +148,18 @@ Vout = evalsig(data,'vout');
 Fig3 = figure('Position', [100, 75, 850, 600]);
 
 subplot(2,1,1)
-semilogx(frequency, 20*log10(abs(Vout)), 'linewidth',lw);
+semilogx(frequency, 20.*log10(abs(Vout)), 'linewidth',lw);
 grid on;
 set(gca, 'fontsize', fs);
 ylabel('dB Voltage', 'fontsize', fs);
-title('ECE 214: Lab 3, Low Pass Filter (frequency response)');
+title('ECE 214: Lab 5, Low Pass Filter (frequency response)');
 
 % hold on
 % semilogx(meas_f, meas_m, 'linewidth', lw);
 % legend('Simulated Magnitude', 'Measured Magnitude'); % add legend
 
 subplot(2,1,2)
-semilogx(frequency, angle(Vout)*180/pi, 'linewidth',lw);
+semilogx(frequency, angle(Vout).*180/pi, 'linewidth',lw);
 grid on;
 set(gca, 'fontsize', fs);
 xlabel('Frequency (Hz)', 'fontsize', fs);
